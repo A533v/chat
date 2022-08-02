@@ -12,9 +12,8 @@ if (isset($_COOKIE['user']))   {
 	m2.id as m2ID, m2.idauthor as m2Auth, m2.idchat as m2IDch, m2.text as m2TXT,
 	auth.id as authid, auth.login as auth, 
 	sobes.id as sobesid, sobes.login as login, sobes.avatar
-	FROM `chatsuser`
-	LEFT JOIN chats ON chats.id = chatsuser.idchat
-	LEFT JOIN chatusers ON chatusers.idchat = chatsuser.idchat
+	FROM `chatusers`
+	LEFT JOIN chats ON chats.id = chatusers.idchat
 	LEFT JOIN messages AS m1 ON chats.id = m1.idchat
 	LEFT JOIN (
 		SELECT MAX(messages.id) AS id, messages.idauthor, messages.idchat, messages.text 

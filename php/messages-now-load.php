@@ -9,14 +9,14 @@ if (isset($_COOKIE['user']))   {
 
 	$result = $mysqli->query("SELECT * FROM (
 		SELECT chats.id as idchat, 
-		chatsuser.iduser, 
+		chatusers.iduser, 
 		messages.id as mid, messages.idauthor, messages.text, 
 		users.login, users.avatar
 		FROM chats
-		LEFT JOIN chatsuser ON chats.id = chatsuser.idchat
+		LEFT JOIN chatusers ON chats.id = chatusers.idchat
 		LEFT JOIN messages ON messages.idchat = chats.id
 		LEFT JOIN users ON messages.idauthor = users.id
-		WHERE chats.id = $chatID AND chatsuser.iduser = $userID 
+		WHERE chats.id = $chatID AND chatusers.iduser = $userID 
 		ORDER BY mid DESC LIMIT 2 
 		) T1 ORDER BY mid ASC");
 	

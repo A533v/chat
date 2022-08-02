@@ -10,9 +10,9 @@ require "bd-start.php";
 	
 	$result = $mysqli->query("SELECT *
 	FROM chatusers 
-    LEFT JOIN chatsuser ON chatusers.idchat = chatsuser.idchat
+    LEFT JOIN chatusers AS ch ON chatusers.idchat = ch.idchat
     LEFT JOIN chats ON chatusers.idchat = chats.id
-	WHERE chatusers.iduser = $userID AND chatsuser.iduser = $contactID AND chats.private = 1");
+	WHERE chatusers.iduser = $userID AND chatusers.iduser = $contactID AND chats.private = 1");
 
 	$data = [];
 	while($dat = mysqli_fetch_array($result)) {
